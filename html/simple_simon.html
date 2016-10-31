@@ -2,9 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Simple Simon Game</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/simple_simon.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body>
 
+<!--<body background="../images/ausgrave_royalty.jpg" >-->
+<script src="../js/jquery-3.1.1.js"></script>
+
+<div class="container marketing"><!--Container for the page-->
+
+<h1>Ausgrave Royatly Presents || <br>Simple Simon</h1>
+
+    <button class="btn btn-primary btn-lg btn-block">BEGIN THE GAME</button>
+
+    <!--Instructions to the user-->
+    <h2 id="instructions">INSTRUCTIONS  ||  <br><br>REPEAT <br>THE SEQUENCE<br> YOU JUST SAW</h2>
+
+    <!--Current round display-->
+        <h2>Current Round ||</h2>
+
+
+<div id="big_simon"  class="container fluid"> <!--Container for the game area-->
+
+    <!--Simple simon buttons-->
+    <audio id="simSf"><source src="../audio/simple_simon-f.mp3"></audio> <!--AUDIO for buttons-->
+
+
+    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
+    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
+    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
+    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
+</div>
+
+    <hr class="featurette-divider">
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 JUSTIN ARMER &middot;
+            <a target="_blank" title="follow me on Twitter" href="http://www.twitter.com/ausgrave"><img
+                alt="follow me on Twitter" src="https://c866088.ssl.cf3.rackcdn.com/assets/twitter30x30.png"
+                border=0></a> &middot; <!--TWITTER-->
+            <a target="_blank" title="follow me on facebook" href="http://www.facebook.com/justin.armer.52"><img
+                alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png"
+                border=0></a> &middot; <!--FB-->
+            <a href="https://www.linkedin.com/pub/justin-armer/99/805/164" style="text-decoration:none;"><span
+                style="font: 80% Arial,sans-serif; color:#0783B6;"><img
+                src="https://static.licdn.com/scds/common/u/img/webpromo/btn_in_20x15.png" width="30" height="30"
+                alt="View Justin Armer's LinkedIn profile" style="vertical-align:middle;"
+                border="0">&nbsp;</span></a> &middot; <!--LI-->
+            <iframe allowtransparency="true" scrolling="no" frameborder="no"
+                    src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2Fausgraveroyalty&color=orange_transparent&size=32"
+                    style="width: 32px; height: 32px;"></iframe> <!--SC-->
+        </p>
+    </footer>
+    </div>
+<script src="../js/simple_simon.js"></script>
+<script>
+    var simS = document.getElementById("simSf");
+    function simSound(){
+        simS.play();
+    }
+
+</script>
 </body>
 </html>
