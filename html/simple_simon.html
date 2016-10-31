@@ -11,34 +11,43 @@
 
 <body>
 
-<!--<body background="../images/ausgrave_royalty.jpg" >-->
+<!--<body background="../images/hipBack.jpg" >-->
 <script src="../js/jquery-3.1.1.js"></script>
 
-<div class="container marketing"><!--Container for the page-->
+<!--Container for the page-->
+<div class="container marketing">
 
 <h1>Ausgrave Royatly Presents || <br>Simple Simon</h1>
 
-    <button class="btn btn-primary btn-lg btn-block">BEGIN THE GAME</button>
+    <button class="btn btn-primary btn-lg btn-block" id="startButt">BEGIN THE GAME</button>
 
     <!--Instructions to the user-->
     <h2 id="instructions">INSTRUCTIONS  ||  <br><br>REPEAT <br>THE SEQUENCE<br> YOU JUST SAW</h2>
 
     <!--Current round display-->
-        <h2>Current Round ||</h2>
+        <h2>Current Round ||<br>1<br>
+        <br>Round Status || <br>Please watch the pattern
+        </h2>
 
 
 <div id="big_simon"  class="container fluid"> <!--Container for the game area-->
 
     <!--Simple simon buttons-->
-    <audio id="simSf"><source src="../audio/simple_simon-f.mp3"></audio> <!--AUDIO for buttons-->
+
+    <!--AUDIO for buttons-->
+    <audio id="simSf"><source src="../audio/simple_simon-f.mp3"></audio>
+    <audio id="simSc"><source src="../audio/simple_simon-c.mp3"></audio>
+    <audio id="simSd"><source src="../audio/simple_simon-d.mp3"></audio>
+    <audio id="simSa"><source src="../audio/simple_simon-a.mp3"></audio>
 
 
-    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
-    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
-    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
-    <button class="game_button col-md-6" onclick="simSound()" type="button"></button>
+    <button class="game_button col-md-6" onclick="simSoundf()" type="button" id="topLeft"></button>
+    <button class="game_button col-md-6" onclick="simSoundc()" type="button" id="topRight"></button>
+    <button class="game_button col-md-6" onclick="simSoundd()" type="button" id="bottomLeft"></button>
+    <button class="game_button col-md-6" onclick="simSounda()" type="button" id="bottomRight"></button>
 </div>
 
+    <!--Footer and social media-->
     <hr class="featurette-divider">
     <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
@@ -62,11 +71,23 @@
     </div>
 <script src="../js/simple_simon.js"></script>
 <script>
-    var simS = document.getElementById("simSf");
-    function simSound(){
-        simS.play();
+    //AUDIO JS
+    var simSf = document.getElementById("simSf");
+    function simSoundf(){
+        simSf.play();
     }
-
+    var simSc = document.getElementById("simSc");
+    function simSoundc(){
+        simSc.play();
+    }
+    var simSd = document.getElementById("simSd");
+    function simSoundd(){
+        simSd.play();
+    }
+    var simSa = document.getElementById("simSa");
+    function simSounda(){
+        simSa.play();
+    }
 </script>
 </body>
 </html>
