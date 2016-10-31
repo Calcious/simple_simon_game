@@ -5,6 +5,11 @@
 "use strict";
 (function (){
 
+    //On page load animations
+    $('.game_button').hide().delay(4000).fadeIn(1000);
+    $('#startButt').hide().delay(4500).slideDown(500);
+    $('#roundCount').hide().slideDown(2000);
+    $('#instructions').hide().delay(2000).slideDown(2000);
 
     // var gameArray= [];
 
