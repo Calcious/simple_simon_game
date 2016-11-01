@@ -26,16 +26,16 @@ body{
 .game_button:hover{
     opacity: 0.25;
 }
-#topLeft{
+#tL{
     background-color: green;
 }
-#topRight{
+#tR{
     background-color: red;
 }
-#bottomLeft{
+#bL{
     background-color: yellow;
 }
-#bottomRight{
+#bR{
     background-color: blue;
 }
 h1{
