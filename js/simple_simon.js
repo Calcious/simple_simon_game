@@ -15,27 +15,32 @@
 
     var gameArray = [];
     var userArray = [];
+    var roundCount = 0;
+    var clearListener = null;
 
 //Adding event listeners to buttons on users turn
 
-function userInput() {
-    $('#tL').click(function () {
-        console.log("1");
-        userArray.push("1");
-    });
-    $('#tR').click(function () {
-        console.log("2");
-        userArray.push("2");
-    });
-    $('#bL').click(function () {
-        console.log("3");
-        userArray.push("3");
-    });
-    $('#bR').click(function () {
-        console.log("4");
-        userArray.push("4");
-    });
-}
+// function userInput() {
+//     $('#tL').click(function () {
+//         console.log("1");
+//         userArray.push("1");
+//     });
+//     $('#tR').click(function () {
+//         console.log("2");
+//         userArray.push("2");
+//     });
+//     $('#bL').click(function () {
+//         console.log("3");
+//         userArray.push("3");
+//     });
+//     $('#bR').click(function () {
+//         console.log("4");
+//         userArray.push("4");
+//     });
+// }
+//     setInterval(function() {
+//         compTurn();
+//     }, 3000);
 
     //Hiding the amount of rounds and round status until game begins (will be added to HTML in the future)
     //$('#roundNumber').hide()
@@ -48,8 +53,13 @@ function userInput() {
 
 // This happens when the "begin game" button is selected
     $('#startButt').click(function startGame(){
-    gameArray.length = 0;
-        compTurn();
+        var i = 0;
+        var intervalInit = setInterval(function() {
+            compTurn(i);
+            i++;
+            if (i >= gameArray.length) {
+                clearInterval(intervalInit);}
+        }, 1750);
     });
 
 
@@ -57,6 +67,14 @@ function userInput() {
     function compTurn(){
         sequenceGen();
     }
+
+
+    //A clear interval function that determines how many instances of sequence are generated
+    // function clearInterval(){
+    //     if(gameArray.length == roundCount){
+    //         clearInterval()
+    //     }
+    // }
 
 
 
@@ -68,21 +86,25 @@ function userInput() {
                         gameArray.push('1');
                         console.log("sequenceGen just pushed 1");
                         boxAnim('#tL');
+                        simSoundf();
                         break;
                     case (randomSquare == 2):
                         gameArray.push('2');
                         console.log("sequenceGen just pushed 2");
                         boxAnim('#tR');
+                        simSoundc();
                         break;
                     case (randomSquare == 3):
                         gameArray.push('3');
                         console.log("sequenceGen just pushed 3");
                         boxAnim('#bL');
+                        simSoundd();
                         break;
                     case (randomSquare == 4):
                         gameArray.push('4');
                         console.log("sequenceGen just pushed 4");
                         boxAnim('#bR');
+                        simSounda();
                         break;
                 }
     }
@@ -97,7 +119,6 @@ function userInput() {
 //This happens when the comp animates boxes
     function boxAnim(boxid) {
         $(boxid).fadeOut(300).fadeIn(300);
-
     }
 
     //A function that compares the user input to compTurn
