@@ -42,63 +42,78 @@
 //Methods that will be needed later--see W3schools for more information
 //setTimeout(function,milliseconds,param1,param2,...)
 //setInterval(function,milliseconds,param1,param2,...)
-//
+//clearInterval(id_of_setinterval)
 
 // This happens when the "begin game" button is selected
     function startGame(){
-roundCount = 0;
+    var roundCount = 0;
     gameArray.length = 0;
-        sequenceGen();
-        //user watches certain boxes animate
-        //add to round count
+        compTurn();
+        roundCount++;
     }
 
 
 //A function that takes a game button as a parameter and animates it when selected by either comp or player
-    //function boxAnim(){}
+    function compTurn(){
+        sequenceGen();
+        var i = 0;
+        var intervalId = setInterval(function(){
+            animateSeq(i);
+            i++;
+            if (i >= gameArray.length) {
+                clearInterval(intervalId);
+            }
+        },1500);
+    }
+
+
 
 // This generates a random sequence
     function sequenceGen() {
-        var randomSq = Math.floor(Math.random() * 4) + 1;
+        var randomSquare = Math.floor(Math.random() * 4) + 1;
         switch (true) {
-                    case (randomSq == 1):
+                    case (randomSquare == 1):
                         gameArray.push('tL');
                         break;
-                    case (randomSq == 2):
+                    case (randomSquare == 2):
                         gameArray.push('tR');
                         break;
-                    case (randomSq == 3):
+                    case (randomSquare == 3):
                         gameArray.push('bL');
                         break;
-                    case (randomSq == 4):
+                    case (randomSquare == 4):
                         gameArray.push('bR');
                         break;
                 }
     }
 
-//This adds an event listener to console.log a value assigned to each button (1, 2, 3, & 4)
-
 //Tells the user that the game is over
-    //$('#roundNumber').hide()
-    //$('#roundStatus').hide()
-    //roundCount = 0
+    function gameOver(){
+        userArray = 0;
+        gameArray.length = 0;
+        alert("Game Over--seems Simple Simon isn't so simple")
+    }
 
 
 //This happens when the comp selects a series of boxes
+    function boxAnim(boxid) {
+        $(boxid).animate({width: 100}, 100);
+        $(boxid).animate({height: 100}, 100);
+    }
 
 
 // A function that causes an animation in the boxes as they are selected
-//     function ???(i) {
-//         if (sequence[i] == 'tL')  {
-//             boxAnim('#topLeft');
-//         } else if (sequence[i] == 'tR')  {
-//             boxAnim('#topRight');
-//         } else if (sequence[i] == 'bL')  {
-//             boxAnim('#bottomLeft');
-//         } else if (sequence[i] == 'bR')  {
-//             boxAnim('#bottomRight');
-//         };
-//     }
+    function animateSeq(i) {
+        if (gameArray[i] == 'tL')  {
+            boxAnim('#topLeft');
+        } else if (sgameArray[i] == 'tR')  {
+            boxAnim('#topRight');
+        } else if (gameArray[i] == 'bL')  {
+            boxAnim('#bottomLeft');
+        } else if (gameArray[i] == 'bR')  {
+            boxAnim('#bottomRight');
+        };
+    }
 
 
 
