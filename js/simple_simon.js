@@ -44,17 +44,37 @@
 //setInterval(function,milliseconds,param1,param2,...)
 //
 
-//This happens when the "begin game" button is selected
-//     function startGame(){
-//roundCount = 0
-//     }
+// This happens when the "begin game" button is selected
+    function startGame(){
+roundCount = 0;
+    gameArray.length = 0;
+        sequenceGen();
+        //user watches certain boxes animate
+        //add to round count
+    }
 
 
 //A function that takes a game button as a parameter and animates it when selected by either comp or player
     //function boxAnim(){}
 
-//This generates a random sequence
-//     var randomSeq =
+// This generates a random sequence
+    function sequenceGen() {
+        var randomSq = Math.floor(Math.random() * 4) + 1;
+        switch (true) {
+                    case (randomSq == 1):
+                        gameArray.push('tL');
+                        break;
+                    case (randomSq == 2):
+                        gameArray.push('tR');
+                        break;
+                    case (randomSq == 3):
+                        gameArray.push('bL');
+                        break;
+                    case (randomSq == 4):
+                        gameArray.push('bR');
+                        break;
+                }
+    }
 
 //This adds an event listener to console.log a value assigned to each button (1, 2, 3, & 4)
 
