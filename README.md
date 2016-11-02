@@ -3,8 +3,7 @@
 TO DO:
 
 --STYLING--
--Mobile Formatting
--Round-display
+-Round-display (appending works, but default display needed in right box)
 -Revise styling of game buttons
 
 --AUDIO--
