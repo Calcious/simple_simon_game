@@ -67,8 +67,12 @@
         userArray = [];
         if (gameArray.length > 0) {
             compTurn();
+            roundCount++;
+            console.log(roundCount);
         } else {
             compTurn();
+            roundCount++;
+            console.log(roundCount);
         }
     });
 

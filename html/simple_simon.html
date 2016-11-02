@@ -8,11 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
-
 <body>
-
-<!--<body background="../images/hipBack.jpg" >-->
-
 
 <!--Container for the page-->
 <div class="container marketing">
@@ -22,15 +18,18 @@
     <button class="btn btn-primary btn-lg btn-block" id="startButt">BEGIN THE ROUND</button>
 
     <!--Instructions to the user-->
-    <h2 id="instructions">INSTRUCTIONS || <br><br>REPEAT <br>THE SEQUENCE<br> YOU JUST SAW</h2>
+    <div id="instructions">
+    <h2>INSTRUCTIONS || <br><br>REPEAT <br>THE SEQUENCE<br> YOU JUST SAW</h2>
+    </div>
 
     <!--Current round display-->
-    <h2 id="roundCount">CURRENT ROUND ||<br>1<br>
+    <div id="roundCount">
+    <h2>CURRENT ROUND ||<br>1<br>
         <br>ROUND STATUS ||<br>WATCHING
     </h2>
+    </div>
 
-
-    <div id="big_simon" class="container fixed"> <!--Container for the game area-->
+    <div id="big_simon"> <!--Container for the game area-->
 
         <!--Simple simon buttons-->
 
@@ -48,7 +47,7 @@
             <source src="../audio/simple_simon-a.mp3">
         </audio>
 
-
+        <!--Game button Layout-->
         <button class="game_button col-sm-6 container fixed" data-game="1" onclick="simSoundf()" type="button"
                 id="tL"></button>
         <button class="game_button col-sm-6 container fixed" data-game="2" onclick="simSoundc()" type="button"

@@ -16,7 +16,6 @@ h1 {
 
 h2 {
     margin-top: 35px;
-    float: left;
     font-family: arcade;
 }
 h5 {
@@ -26,8 +25,8 @@ h5 {
 
 /*CLASS SELECTORS*/
 .game_button {
-    width: 40%;
-    height: 150px;
+    width: 135px;
+    height: 135px;
     margin: 15px;
     border-radius: 5px;
 }
@@ -45,6 +44,7 @@ h5 {
     margin-top: 25px;
     border-radius: 5px;
 }
+/*Game Buttons*/
 #tL {
     background-color: green;
 }
@@ -60,9 +60,25 @@ h5 {
 #bR {
     background-color: blue;
 }
-#instructions {
+/*Instructions and round count divs*/
+#instructions{
+    height: 210px;
+    width: 275px;
+    float: left;
     margin-top: 35px;
+    background-color: #a94442;
+}
+#roundCount{
+    height: 210px;
+    width: 275px;
     float: right;
-    font-family: arcade;
+    margin-top: 35px;
+    background-color: #a94442;
 }
 
+/*Media Queries*/
+@media screen and (min-width: 480px) {
+    div footer{
+        opacity: 0;
+    }
+}
