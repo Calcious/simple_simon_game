@@ -41,6 +41,7 @@
     var userArray = []; //Stores buttons selected by the user
     var roundCount = 0;
     var gameArrayIndex = 0;
+    var roundStatus = "";
 
 
 //Adding event listeners to buttons on users turn
@@ -69,6 +70,7 @@
             compTurn();
             roundCount++;
             console.log(roundCount);
+            $('#roundNumber').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2><br>ROUND STATUS ||<br><span>WATCHING</span>")
         } else {
             compTurn();
             roundCount++;
@@ -79,27 +81,31 @@
 //Follows the path of the comp's turn
     function compTurn() {
         sequenceGen();
+        var roundStatus = "Watching";
+        $('#roundStatus').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2>")
     }
 
 
 //Stores the value of the square selected by the user and compares the results with the comp's selection
-    $('.game_button').click(function () {
-        var userValue = $(this).data("game");
-        userArray.push(userValue);
-        console.log("User Array: " + userArray);
-        console.log("Game Array: " + gameArray);
-        for (gameArrayIndex; gameArrayIndex < userArray.length; gameArrayIndex++) {
-            if (userArray[gameArrayIndex] != gameArray[gameArrayIndex]) {
-                gameArrayIndex = 0;
-                gameOver();
-
-            } else {
-                gameArrayIndex++;
-                console.log("THEYRE THE SAME!")
+    function userTurn() {
+        $('.game_button').click(function () {
+            var roundStatus = "User's turn to match";
+            var userValue = $(this).data("game");
+            userArray.push(userValue);
+            console.log("User Array: " + userArray);
+            console.log("Game Array: " + gameArray);
+            for (gameArrayIndex; gameArrayIndex < userArray.length; gameArrayIndex++) {
+                if (userArray[gameArrayIndex] != gameArray[gameArrayIndex]) {
+                    gameArrayIndex = 0;
+                    gameOver();
+                } else {
+                    gameArrayIndex++;
+                    console.log("THEYRE THE SAME!")
+                }
             }
-        }
-    });
-
+        });
+    }
+    userTurn();
     function doSetTimeout(preVal) {
         setTimeout(boxAnim(preVal), 1000);
     }
@@ -161,6 +167,7 @@
         alert("Game Over--seems Simple Simon isn't so simple");
         gameArray = [];
         userArray = [];
+        roundStatus = "";
     }
 
 

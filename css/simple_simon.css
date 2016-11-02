@@ -37,7 +37,7 @@ h5 {
 /*ID SELECTORS*/
 #big_simon {
     width: 340px;
-    height: 380px;
+    height: 350px;
     background-color: rgba(0, 0, 0, .1);
     margin: 0 auto;
     margin-bottom: 25px;
@@ -62,14 +62,14 @@ h5 {
 }
 /*Instructions and round count divs*/
 #instructions{
-    height: 210px;
+    height: 310px;
     width: 275px;
     float: left;
     margin-top: 35px;
     background-color: #a94442;
 }
 #roundCount{
-    height: 210px;
+    height: 310px;
     width: 275px;
     float: right;
     margin-top: 35px;
@@ -77,8 +77,8 @@ h5 {
 }
 
 /*Media Queries*/
-@media screen and (min-width: 480px) {
-    div footer{
-        opacity: 0;
-    }
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+    #instructions { display: none; }
+    #roundCount { display: none; }
 }
