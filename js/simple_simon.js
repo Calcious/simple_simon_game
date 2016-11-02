@@ -103,9 +103,8 @@
         });
     }
     userTurn();
-    function doSetTimeout(preVal) {
-        setTimeout(boxAnim(preVal), 2000);
-    }
+
+
 
 //Generates a random sequence and animates the outcome
     function sequenceGen() {
@@ -116,10 +115,15 @@
         if (gameArray.length > 0) {
             var randomString = randomSquare.toString();
             gameArray.push(randomString);
-            for (var i = 0; i < gameArray.length; i++) {
+            var i = 0;
                 var preVal = gameArray[i];
-                doSetTimeout(preVal);
-            }
+                var intervalId = setInterval(function() {
+                    boxAnim(randomSquare);
+                    i++;
+                    if(i >= gameArray.length) {
+                        clearInterval(intervalId);
+                    }
+                }, 2000);
         } else {
             //Occurs during the first selection by the computer
             switch (true) {
@@ -154,6 +158,7 @@
         gameArray = [];
         userArray = [];
         roundStatus = "";
+        roundCount = "";
     }
 
 
