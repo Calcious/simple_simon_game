@@ -39,7 +39,7 @@
 //Variable initializations
     var gameArray = []; //Stores buttons selected randomly by the computer
     var userArray = []; //Stores buttons selected by the user
-    var roundCount = 0;
+    var roundCount = 1;
     var gameArrayIndex = 0;
     var roundStatus = "";
 
@@ -66,11 +66,11 @@
 //When the "begin round" button is selected--this makes sure that the userArray is clear of previous values
     $("#startButt").click(function () {
         userArray = [];
+        $('#roundNumber').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2><br>ROUND STATUS ||<br><span>WATCHING</span>")
         if (gameArray.length > 0) {
             compTurn();
             roundCount++;
             console.log(roundCount);
-            $('#roundNumber').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2><br>ROUND STATUS ||<br><span>WATCHING</span>")
         } else {
             compTurn();
             roundCount++;
@@ -82,7 +82,6 @@
     function compTurn() {
         sequenceGen();
         var roundStatus = "Watching";
-        $('#roundStatus').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2>")
     }
 
 
@@ -92,22 +91,20 @@
             var roundStatus = "User's turn to match";
             var userValue = $(this).data("game");
             userArray.push(userValue);
-            console.log("User Array: " + userArray);
-            console.log("Game Array: " + gameArray);
             for (gameArrayIndex; gameArrayIndex < userArray.length; gameArrayIndex++) {
                 if (userArray[gameArrayIndex] != gameArray[gameArrayIndex]) {
                     gameArrayIndex = 0;
                     gameOver();
                 } else {
                     gameArrayIndex++;
-                    console.log("THEYRE THE SAME!")
+                    alert("THEYRE THE SAME!  Press the 'Begin Round' button to continue!");
                 }
             }
         });
     }
     userTurn();
     function doSetTimeout(preVal) {
-        setTimeout(boxAnim(preVal), 1000);
+        setTimeout(boxAnim(preVal), 2000);
     }
 
 //Generates a random sequence and animates the outcome
@@ -121,9 +118,6 @@
             gameArray.push(randomString);
             for (var i = 0; i < gameArray.length; i++) {
                 var preVal = gameArray[i];
-                var preValString = preVal.toString();
-                console.log(gameArray);
-                console.log("this is preval" + preValString);
                 doSetTimeout(preVal);
             }
         } else {
@@ -131,29 +125,21 @@
             switch (true) {
                 case (randomSquare == 1):
                     gameArray.push('1');
-                    console.log("sequenceGen just pushed 1");
-                    console.log(gameArray);
                     boxAnim("1");
                     simSoundf();
                     break;
                 case (randomSquare == 2):
                     gameArray.push('2');
-                    console.log("sequenceGen just pushed 2");
-                    console.log(gameArray);
                     boxAnim("2");
                     simSoundc();
                     break;
                 case (randomSquare == 3):
                     gameArray.push('3');
-                    console.log("sequenceGen just pushed 3");
-                    console.log(gameArray);
                     boxAnim("3");
                     simSoundd();
                     break;
                 case (randomSquare == 4):
                     gameArray.push('4');
-                    console.log("sequenceGen just pushed 4");
-                    console.log(gameArray);
                     boxAnim("4");
                     simSounda();
                     break;

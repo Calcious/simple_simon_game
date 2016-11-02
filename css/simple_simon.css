@@ -18,6 +18,9 @@ h2 {
     margin-top: 35px;
     font-family: arcade;
 }
+h4{
+    font-family: arcade;
+}
 h5 {
     margin-top: 20px;
     font-family: arcade;
@@ -48,15 +51,12 @@ h5 {
 #tL {
     background-color: green;
 }
-
 #tR {
     background-color: red;
 }
-
 #bL {
     background-color: yellow;
 }
-
 #bR {
     background-color: blue;
 }
