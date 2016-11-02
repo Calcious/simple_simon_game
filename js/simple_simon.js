@@ -37,78 +37,48 @@
     }
 
 //Variable initializations
-    var gameArray = [];
-    var userArray = [];
+    var gameArray = []; //Stores buttons selected randomly by the computer
+    var userArray = []; //Stores buttons selected by the user
     var roundCount = 0;
-    var clearListener = null;
     var gameArrayIndex = 0;
 
 
 //Adding event listeners to buttons on users turn
+    $('#tL').click(function () {
+        boxAnim("1");
+        simSoundf();
+    });
+    $('#tR').click(function () {
+        boxAnim("2");
+        simSoundc();
+    });
+    $('#bL').click(function () {
+        boxAnim("3");
+        simSoundd();
+    });
+    $('#bR').click(function () {
+        boxAnim("4");
+        simSounda();
+    });
 
-    function userInput() {
-        $('#tL').click(function () {
-            console.log("1");
-            console.log(userArray);
-            userArray.push("1");
-            boxAnim('#tL');
-            simSoundf();
-        });
-        $('#tR').click(function () {
-            console.log("2");
-            console.log(userArray);
-            userArray.push("2");
-            boxAnim('#tR');
-            simSoundc();
-        });
-        $('#bL').click(function () {
-            console.log("3");
-            console.log(userArray);
-            userArray.push("3");
-            boxAnim('#bL');
-            simSoundd();
-        });
-        $('#bR').click(function () {
-            console.log("4");
-            console.log(userArray);
-            userArray.push("4");
-            boxAnim('#bR');
-            simSounda();
-        });
-    }
 
-    //Hiding the amount of rounds and round status until game begins (will be added to HTML in the future)
-    //$('#roundNumber').hide()
-    //$('#roundStatus').hide()
-
-// This happens when the "begin game" button is selected
-
+//When the "begin round" button is selected--this makes sure that the userArray is clear of previous values
     $("#startButt").click(function () {
         userArray = [];
         if (gameArray.length > 0) {
-            // userTurn();
             compTurn();
-            // compAnimate();
-            // compPush();
         } else {
             compTurn();
         }
     });
 
-    function compAnimate() {
-        //separate these?
-    }
-
-    function compPush() {
-        //separate these?
-    }
-
-
-//A function that follows the path of the comp's turn
+//Follows the path of the comp's turn
     function compTurn() {
         sequenceGen();
     }
 
+
+//Stores the value of the square selected by the user and compares the results with the comp's selection
     $('.game_button').click(function () {
         var userValue = $(this).data("game");
         userArray.push(userValue);
@@ -121,7 +91,7 @@
 
             } else {
                 gameArrayIndex++;
-                console.log("THEYRE THE SAME!!!#$@#$@#")
+                console.log("THEYRE THE SAME!")
             }
         }
     });
@@ -130,10 +100,12 @@
         setTimeout(boxAnim(preVal), 1000);
     }
 
-// This generates a random sequence and animates the outcome
+//Generates a random sequence and animates the outcome
     function sequenceGen() {
         var randomSquare = Math.floor(Math.random() * 4) + 1;
 
+
+//Occurs on every round after the first--converts the value to a string then animates the related square
         if (gameArray.length > 0) {
             var randomString = randomSquare.toString();
             gameArray.push(randomString);
@@ -145,6 +117,7 @@
                 doSetTimeout(preVal);
             }
         } else {
+            //Occurs during the first selection by the computer
             switch (true) {
                 case (randomSquare == 1):
                     gameArray.push('1');
@@ -176,10 +149,9 @@
                     break;
             }
         }
-
     }
 
-//Tells the user that the game is over
+//Tells the user that the game is over and clears both arrays for the next game
     function gameOver() {
         gameArray.length = 0;
         alert("Game Over--seems Simple Simon isn't so simple");
@@ -188,12 +160,10 @@
     }
 
 
-//This happens when the comp animates boxes
+//This happens when the boxes animate
     function boxAnim(value) {
         $('.game_button[data-game=' + value + ']').fadeOut(300).fadeIn(300);
     }
-
-    //A function that compares the user input to compTurn
 
 
 }());
