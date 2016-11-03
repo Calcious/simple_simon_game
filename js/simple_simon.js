@@ -39,7 +39,7 @@
 //Variable initializations
     var gameArray = []; //Stores buttons selected randomly by the computer
     var userArray = []; //Stores buttons selected by the user
-    var roundCount = 1;
+    var roundCount = 0;
     var gameArrayIndex = 0;
     var roundStatus = "";
 
@@ -65,6 +65,7 @@
 
 //When the "begin round" button is selected--this makes sure that the userArray is clear of previous values
     $("#startButt").click(function () {
+        console.log(gameArray);
         userArray = [];
         $('#roundNumber').html("<h2>CURRENT ROUND ||<br>" + roundCount + "<br></h2><br>ROUND STATUS ||<br><span>WATCHING</span>")
         if (gameArray.length > 0) {
@@ -105,49 +106,28 @@
     userTurn();
 
 
-
 //Generates a random sequence and animates the outcome
     function sequenceGen() {
         var randomSquare = Math.floor(Math.random() * 4) + 1;
+        console.log(gameArray);
 
 
 //Occurs on every round after the first--converts the value to a string then animates the related square
         if (gameArray.length > 0) {
+            sqSelect(randomSquare);
             var randomString = randomSquare.toString();
             gameArray.push(randomString);
             var i = 0;
                 var preVal = gameArray[i];
                 var intervalId = setInterval(function() {
-                    boxAnim(randomSquare);
+                    boxAnim(preVal);
                     i++;
                     if(i >= gameArray.length) {
                         clearInterval(intervalId);
                     }
-                }, 2000);
+                }, 1000);
         } else {
-            //Occurs during the first selection by the computer
-            switch (true) {
-                case (randomSquare == 1):
-                    gameArray.push('1');
-                    boxAnim("1");
-                    simSoundf();
-                    break;
-                case (randomSquare == 2):
-                    gameArray.push('2');
-                    boxAnim("2");
-                    simSoundc();
-                    break;
-                case (randomSquare == 3):
-                    gameArray.push('3');
-                    boxAnim("3");
-                    simSoundd();
-                    break;
-                case (randomSquare == 4):
-                    gameArray.push('4');
-                    boxAnim("4");
-                    simSounda();
-                    break;
-            }
+            sqSelect(randomSquare);
         }
     }
 
@@ -158,13 +138,52 @@
         gameArray = [];
         userArray = [];
         roundStatus = "";
-        roundCount = "";
+        roundCount = 0;
     }
 
 
 //This happens when the boxes animate
     function boxAnim(value) {
         $('.game_button[data-game=' + value + ']').fadeOut(300).fadeIn(300);
+        if(value == '1'){
+            simSoundf();
+        } else if(value == '2'){
+            simSoundc();
+        } else if(value == '3'){
+            simSoundd();
+        } else if(value == '4'){
+            simSounda();
+        }
+    }
+
+//Occurs any time a square is selected by the comp
+    function sqSelect(randomSquare) {
+        switch (true) {
+            case (randomSquare == 1):
+                gameArray.push('1');
+                console.log("1 got pushed");
+                boxAnim("1");
+                simSoundf();
+                break;
+            case (randomSquare == 2):
+                gameArray.push('2');
+                console.log("1 got pushed");
+                boxAnim("2");
+                simSoundc();
+                break;
+            case (randomSquare == 3):
+                gameArray.push('3');
+                console.log("3 got pushed");
+                boxAnim("3");
+                simSoundd();
+                break;
+            case (randomSquare == 4):
+                gameArray.push('4');
+                console.log("4 got pushed");
+                boxAnim("4");
+                simSounda();
+                break;
+        }
     }
 
 
