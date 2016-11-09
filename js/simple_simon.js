@@ -190,13 +190,13 @@
         $(selector).css("opacity", "0.2")
             .animate({
                 opacity: "1.0"
-            }, 300);
+            }, 500);
 
     }
 
 // randomly pick a square and add it to the end of simon's Sequence
     function simonMove() {
-        var squares = ['.green', '.red', '.yellow', '.blue'];
+        var squares = ['#green', '#red', '.#ellow', '#blue'];
         var random = Math.floor(Math.random() * 4);
         console.log(random);
         var randomSquare = squares[random];
@@ -224,7 +224,7 @@
     }
 
     function compare(color) {
-        var userSelection = "." + color;
+        var userSelection = "#" + color;
         var currentSimonMove = simonSequence[indexOfSimonMove];
 
         // userSelection matches currentSimonMove
@@ -264,7 +264,7 @@
             animate($(this));
 
             // compare user input to all of simon's choices in order
-            compare($(this).attr("class"));
+            compare($(this).attr("id"));
 
         });
     }

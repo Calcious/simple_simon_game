@@ -48,16 +48,16 @@ h5 {
     border-radius: 5px;
 }
 /*Game Buttons*/
-#tL {
+#green {
     background-color: green;
 }
-#tR {
+#red {
     background-color: red;
 }
-#bL {
+#yellow {
     background-color: yellow;
 }
-#bR {
+#blue {
     background-color: blue;
 }
 
